@@ -256,11 +256,11 @@ export default function App() {
           <div className="flex items-center justify-between h-20 gap-4">
             
             {/* LOGO */}
-            <a href="#" className="flex items-center gap-2.5 group shrink-0">
+            <a href="#" className="flex items-center gap-2.5 group shrink-0 mr-6 xl:mr-10">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col shrink-0">
                 <div className="flex items-center gap-1.5">
                   <span className="font-extrabold text-lg tracking-tight text-white">KASBTECH</span>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
@@ -269,8 +269,8 @@ export default function App() {
               </div>
             </a>
 
-            {/* NAV LINKS (Clean spacing for 2XL viewports) */}
-            <nav className="hidden 2xl:flex items-center gap-6 text-xs font-semibold text-slate-300 shrink-0">
+            {/* NAV LINKS (Visible on XL viewports 1280px+ with clear spacing) */}
+            <nav className="hidden xl:flex items-center gap-5 text-xs font-semibold text-slate-300 shrink-0">
               <a href="#kurslar" className="hover:text-red-400 transition-colors">Kurslarimiz</a>
               <a href="#grant" className="hover:text-red-400 transition-colors">Davlat Granti</a>
               <a href="#vaucher" className="hover:text-emerald-400 transition-colors text-emerald-400 font-bold flex items-center gap-1"><FileText className="w-3.5 h-3.5" /> Vaucher Qo'llanmasi</a>
@@ -307,10 +307,10 @@ export default function App() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              {/* HAMBURGER BUTTON FOR SCREENS < 1536px (2xl:hidden) */}
+              {/* HAMBURGER BUTTON FOR SCREENS < 1280px (xl:hidden) */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="2xl:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                className="xl:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5 text-red-500" /> : <Menu className="w-5 h-5 text-white" />}
@@ -322,7 +322,7 @@ export default function App() {
 
         {/* MOBILE & TABLET NAVIGATION DRAWER */}
         {isMobileMenuOpen && (
-          <div className="2xl:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
+          <div className="xl:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
             <nav className="flex flex-col space-y-2.5 font-semibold text-slate-200 text-sm">
               <a
                 href="#kurslar"
