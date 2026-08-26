@@ -1154,15 +1154,15 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             
             {/* DIRECTOR & LEAD MENTOR: JAVOXIR ALIYEV */}
-            <div className="glass-card p-6 sm:p-8 rounded-3xl border-slate-800 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
-              <div className="relative shrink-0">
+            <div className="glass-card tilt-card-3d p-6 sm:p-8 rounded-3xl border-slate-800 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left hover:border-red-500/50 transition-all">
+              <div className="relative shrink-0 group">
                 <img
                   src="/javoxir_aliyev.jpg"
                   alt="Javoxir Aliyev - Kasbtech Akademiyasi Direktori"
-                  className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover border-2 border-red-500/50 shadow-xl shadow-red-950/50"
+                  className="w-32 h-40 sm:w-44 sm:h-52 rounded-2xl object-cover object-top border-2 border-red-500/60 shadow-xl shadow-red-950/60 group-hover:scale-[1.03] transition-transform duration-300"
                 />
-                <span className="absolute -bottom-2 -right-2 bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow">
-                  DIREKTOR
+                <span className="absolute -bottom-2.5 -right-2 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[10px] font-black px-2.5 py-1 rounded-md shadow-lg border border-red-400/40">
+                  👑 DIREKTOR
                 </span>
               </div>
 
