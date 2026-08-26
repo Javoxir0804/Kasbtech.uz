@@ -425,17 +425,16 @@ export default function App() {
               
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-red-500/30 text-rose-300 text-xs md:text-sm font-semibold">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-                <span>Rasmiy Band Bo'lmagan Fuqarolar Diqqatiga!</span>
+                <span>🎉 KASBTECH AKADEMIYASIDAN AJOYIB IMKONIYAT!</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15]">
-                Dasturlashni Bilmasdan Turib <br className="hidden sm:inline" />
-                <span className="gradient-text-red">Professional IT & AI</span> Kasbini Egallang!
+                Kasbtech Akademiyasidan <br />
+                <span className="gradient-text-red">Ajoyib Imkoniyat!</span> 🎁
               </h1>
 
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-                Kasbtech Akademiyasida qisqa vaqt ichida eng talabgir IT yo'nalishlarini o'zlashtiring. 
-                <strong className="text-white font-semibold"> Band bo'lmagan fuqarolarga 100% TEKIN (Davlat granti)</strong>, talabalarga esa <strong className="text-amber-300 font-semibold">20% chegirma</strong> taqdim etiladi!
+              <p className="text-slate-200 text-base sm:text-xl font-medium leading-relaxed max-w-2xl">
+                Agar siz rasmiy band bo‘lmasangiz, <span className="gradient-text-gold font-extrabold text-xl sm:text-2xl">50% dan 100% gacha</span> bo‘lgan grantga ega bo‘lishingiz mumkin!
               </p>
 
               {/* QUICK KEY BENEFITS BULLETS */}
