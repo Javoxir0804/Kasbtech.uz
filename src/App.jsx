@@ -236,13 +236,13 @@ export default function App() {
       <div className="fixed bottom-10 left-1/3 w-[650px] h-[650px] bg-amber-500/10 rounded-full blur-[180px] floating-3d-orb pointer-events-none z-0" />
 
       {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-xs md:text-sm font-semibold py-2 px-4 text-center shadow-lg relative z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-          <span className="bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full text-xs uppercase tracking-wider animate-pulse">🔥 QABUL OCHIQ</span>
-          <span>Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
-          <span className="hidden sm:inline-block">•</span>
-          <span className="text-amber-200">Shoshiling, kvota cheklangan:</span>
-          <div className="inline-flex items-center gap-1 bg-black/30 px-2 py-0.5 rounded font-mono text-amber-300">
+      <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-semibold py-2 px-3 text-center shadow-lg relative z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap leading-tight">
+          <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider font-extrabold animate-pulse shrink-0">🔥 QABUL OCHIQ</span>
+          <span className="font-medium">Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
+          <span className="hidden md:inline-block text-white/50">•</span>
+          <span className="text-amber-200 font-medium hidden sm:inline-block">Kvotalar cheklangan:</span>
+          <div className="inline-flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md font-mono text-amber-300 text-[11px] border border-amber-500/30">
             <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
             <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
             <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
@@ -253,23 +253,24 @@ export default function App() {
       {/* NAVBAR */}
       <header className="sticky top-0 z-40 glass-nav transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 gap-4">
             
             {/* LOGO */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform duration-300">
-                <Sparkles className="w-6 h-6 text-white" />
+            <a href="#" className="flex items-center gap-2.5 group shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
+                <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
-                  KASBTECH <span className="text-red-500 text-xs px-2 py-0.5 rounded bg-red-950/80 border border-red-800/60 font-semibold">AKADEMIYASI</span>
-                </span>
-                <span className="text-[11px] text-slate-400 font-medium">Zamonaviy Kasblar Akademiyasi</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-extrabold text-lg tracking-tight text-white">KASBTECH</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium hidden sm:block">Zamonaviy Kasblar Akademiyasi</span>
               </div>
             </a>
 
-            {/* NAV LINKS */}
-            <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+            {/* NAV LINKS (Clean spacing for 2XL viewports) */}
+            <nav className="hidden 2xl:flex items-center gap-6 text-xs font-semibold text-slate-300 shrink-0">
               <a href="#kurslar" className="hover:text-red-400 transition-colors">Kurslarimiz</a>
               <a href="#grant" className="hover:text-red-400 transition-colors">Davlat Granti</a>
               <a href="#vaucher" className="hover:text-emerald-400 transition-colors text-emerald-400 font-bold flex items-center gap-1"><FileText className="w-3.5 h-3.5" /> Vaucher Qo'llanmasi</a>
@@ -279,10 +280,10 @@ export default function App() {
             </nav>
 
             {/* HEADER ACTIONS */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5 shrink-0">
               <a
                 href="tel:+998872647171"
-                className="hidden xl:flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
+                className="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
               >
                 <Phone className="w-3.5 h-3.5 text-emerald-400" />
                 <span>+998-87-264-71-71</span>
@@ -292,36 +293,36 @@ export default function App() {
                 href="https://t.me/kasbtech_akademiyasi"
                 target="_blank"
                 rel="noreferrer"
-                className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-xs font-semibold text-sky-400 transition-all"
+                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-xs font-semibold text-sky-400 transition-all"
               >
-                <Send className="w-4 h-4 text-sky-400" />
-                <span>Telegram Kanal</span>
+                <Send className="w-3.5 h-3.5 text-sky-400" />
+                <span>Telegram</span>
               </a>
 
               <button
                 onClick={() => handleOpenRegister()}
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
               >
                 <span>Ro'yxatdan O'tish</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              {/* MOBILE HAMBURGER BUTTON */}
+              {/* HAMBURGER BUTTON FOR SCREENS < 1536px (2xl:hidden) */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                className="2xl:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
                 aria-label="Toggle navigation menu"
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6 text-red-500" /> : <Menu className="w-6 h-6 text-white" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5 text-red-500" /> : <Menu className="w-5 h-5 text-white" />}
               </button>
             </div>
 
           </div>
         </div>
 
-        {/* MOBILE NAVIGATION DRAWER */}
+        {/* MOBILE & TABLET NAVIGATION DRAWER */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
+          <div className="2xl:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
             <nav className="flex flex-col space-y-2.5 font-semibold text-slate-200 text-sm">
               <a
                 href="#kurslar"
