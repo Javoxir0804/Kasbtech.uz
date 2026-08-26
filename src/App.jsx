@@ -29,13 +29,15 @@ import {
   Gift,
   FileText,
   AlertTriangle,
-  Info
+  Info,
+  Menu
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function App() {
   // Modal states
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('AI "VIBE CODING" (14 kun)');
   const [lightboxImage, setLightboxImage] = useState(null);
 
@@ -297,15 +299,116 @@ export default function App() {
 
               <button
                 onClick={() => handleOpenRegister()}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <span>Ro'yxatdan O'tish</span>
                 <ArrowRight className="w-4 h-4" />
+              </button>
+
+              {/* MOBILE HAMBURGER BUTTON */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                aria-label="Toggle navigation menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6 text-red-500" /> : <Menu className="w-6 h-6 text-white" />}
               </button>
             </div>
 
           </div>
         </div>
+
+        {/* MOBILE NAVIGATION DRAWER */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
+            <nav className="flex flex-col space-y-2.5 font-semibold text-slate-200 text-sm">
+              <a
+                href="#kurslar"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+              >
+                <span>📚 Kurslarimiz</span>
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+              </a>
+
+              <a
+                href="#grant"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between text-rose-300 font-bold"
+              >
+                <span>🎁 Davlat Granti (100% BEPUL)</span>
+                <ChevronRight className="w-4 h-4 text-rose-400" />
+              </a>
+
+              <a
+                href="#vaucher"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-emerald-400 font-bold hover:bg-emerald-950/60 transition-colors flex items-center justify-between"
+              >
+                <span className="flex items-center gap-2"><FileText className="w-4 h-4" /> 📌 Vaucher Qo'llanmasi</span>
+                <ChevronRight className="w-4 h-4 text-emerald-500" />
+              </a>
+
+              <a
+                href="#afzalliklar"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+              >
+                <span>🌟 Nima Uchun Biz?</span>
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+              </a>
+
+              <a
+                href="#ustozlar"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+              >
+                <span>👨‍🏫 Ustozlarimiz</span>
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+              </a>
+
+              <a
+                href="#faq"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+              >
+                <span>❓ FAQ (Savollar)</span>
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+              </a>
+            </nav>
+
+            <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2.5">
+              <a
+                href="tel:+998872647171"
+                className="w-full py-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-bold text-xs flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4 text-emerald-400" />
+                <span>+998-87-264-71-71 (Qo'ng'iroq qilish)</span>
+              </a>
+
+              <a
+                href="https://t.me/kasbtech_akademiyasi"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-3.5 rounded-xl bg-sky-950/80 border border-sky-800 text-sky-400 font-bold text-xs flex items-center justify-center gap-2"
+              >
+                <Send className="w-4 h-4 text-sky-400" />
+                <span>Telegram Kanal (@kasbtech_akademiyasi)</span>
+              </a>
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  handleOpenRegister();
+                }}
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
+              >
+                <span>Ro'yxatdan O'tish</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* HERO SECTION */}
@@ -1235,8 +1338,8 @@ export default function App() {
 
       {/* REGISTRATION MODAL */}
       {isRegisterModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-          <div className="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border-red-500/40 relative shadow-2xl animate-scale-up">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fade-in">
+          <div className="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border-red-500/40 relative shadow-2xl animate-scale-up max-h-[90vh] overflow-y-auto">
             
             {/* CLOSE BUTTON */}
             <button
@@ -1376,6 +1479,25 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* MOBILE STICKY BOTTOM QUICK DOCK (Android & Mobile Devices) */}
+      <div className="fixed bottom-3 left-3 right-3 z-40 md:hidden glass-nav p-2 rounded-2xl border border-slate-700/80 shadow-2xl flex items-center gap-2 backdrop-blur-xl">
+        <a
+          href="tel:+998872647171"
+          className="flex-1 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-emerald-400 font-extrabold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md"
+        >
+          <Phone className="w-4 h-4 text-emerald-400" />
+          <span>Qo'ng'iroq</span>
+        </a>
+
+        <button
+          onClick={() => handleOpenRegister()}
+          className="flex-[1.5] py-3 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-black text-xs shadow-lg shadow-red-600/40 flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+        >
+          <Sparkles className="w-4 h-4" />
+          <span>Ro'yxatdan O'tish</span>
+        </button>
+      </div>
 
     </div>
   );

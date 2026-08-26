@@ -124,6 +124,20 @@ body {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
+/* Mobile Drawer Slide Animation */
+.animate-slide-down {
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
