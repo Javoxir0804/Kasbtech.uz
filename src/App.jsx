@@ -525,12 +525,12 @@ export default function App() {
                     {/* VIBE CODING POSTER */}
                     <div 
                       onClick={() => setLightboxImage('/vibe_coding_poster.jpg')}
-                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-950 shadow-md hover:border-red-500 transition-all flex items-center justify-center p-1"
+                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-900 shadow-md hover:border-red-500 transition-all"
                     >
                       <img
                         src="/vibe_coding_poster.jpg"
                         alt="AI Vibe Coding poster"
-                        className="w-full h-64 sm:h-72 object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl"
+                        className="w-full h-auto object-cover sm:object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-3 pointer-events-none">
                         <span className="text-[10px] font-bold bg-red-600 text-white px-2 py-0.5 rounded w-max mb-1">14 KUN</span>
@@ -544,12 +544,12 @@ export default function App() {
                     {/* AI MARKETING POSTER */}
                     <div 
                       onClick={() => setLightboxImage('/ai_marketing_poster.jpg')}
-                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-950 shadow-md hover:border-red-500 transition-all flex items-center justify-center p-1"
+                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-900 shadow-md hover:border-red-500 transition-all"
                     >
                       <img
                         src="/ai_marketing_poster.jpg"
                         alt="AI Digital Marketing poster"
-                        className="w-full h-64 sm:h-72 object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl"
+                        className="w-full h-auto object-cover sm:object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-3 pointer-events-none">
                         <span className="text-[10px] font-bold bg-amber-500 text-slate-950 px-2 py-0.5 rounded w-max mb-1">30 KUN</span>
@@ -1003,12 +1003,12 @@ export default function App() {
                   {course.poster && (
                     <div
                       onClick={() => setLightboxImage(course.poster)}
-                      className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-950 flex items-center justify-center p-1 group/poster shadow-inner"
+                      className="relative w-full rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-900 group/poster shadow-md"
                     >
                       <img
                         src={course.poster}
                         alt={course.title}
-                        className="w-full h-full object-contain rounded-xl group-hover/poster:scale-[1.02] transition-transform duration-500"
+                        className="w-full h-auto max-h-96 object-contain rounded-2xl group-hover/poster:scale-[1.02] transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover/poster:opacity-100 flex items-center justify-center transition-opacity">
                         <span className="bg-red-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-xl">
