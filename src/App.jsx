@@ -227,7 +227,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#05070c] text-slate-100 relative overflow-hidden">
+    <div className="min-h-screen bg-[#05070c] text-slate-100 relative">
 
       {/* 3D BACKGROUND GLOW DECORATIONS & MESH */}
       <div className="fixed inset-0 grid-3d-mesh opacity-20 pointer-events-none z-0" />
@@ -235,23 +235,25 @@ export default function App() {
       <div className="fixed top-1/3 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] floating-3d-orb pointer-events-none z-0" />
       <div className="fixed bottom-10 left-1/3 w-[650px] h-[650px] bg-amber-500/10 rounded-full blur-[180px] floating-3d-orb pointer-events-none z-0" />
 
-      {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-semibold py-2 px-3 text-center shadow-lg relative z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap leading-tight">
-          <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider font-extrabold animate-pulse shrink-0">🔥 QABUL OCHIQ</span>
-          <span className="font-medium">Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
-          <span className="hidden md:inline-block text-white/50">•</span>
-          <span className="text-amber-200 font-medium hidden sm:inline-block">Kvotalar cheklangan:</span>
-          <div className="inline-flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md font-mono text-amber-300 text-[11px] border border-amber-500/30">
-            <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
-            <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
-            <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
+      {/* STICKY HEADER & NAVBAR CONTAINER */}
+      <header className="sticky top-0 z-50 glass-nav transition-all duration-300 shadow-2xl shadow-black/80">
+        
+        {/* TOP ANNOUNCEMENT BAR */}
+        <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-semibold py-1.5 px-3 text-center shadow-md">
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap leading-tight">
+            <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider font-extrabold animate-pulse shrink-0">🔥 QABUL OCHIQ</span>
+            <span className="font-medium">Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
+            <span className="hidden md:inline-block text-white/50">•</span>
+            <span className="text-amber-200 font-medium hidden sm:inline-block">Kvotalar cheklangan:</span>
+            <div className="inline-flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md font-mono text-amber-300 text-[11px] border border-amber-500/30">
+              <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
+              <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
+              <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* NAVBAR */}
-      <header className="sticky top-0 z-40 glass-nav transition-all duration-300">
+        {/* MAIN NAVBAR */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-4">
             
