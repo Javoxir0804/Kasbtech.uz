@@ -227,12 +227,13 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#05070c] text-slate-100 relative">
+    <div className="min-h-screen bg-[#05070c] text-slate-100 relative overflow-hidden">
 
-      {/* BACKGROUND GLOW DECORATIONS */}
-      <div className="fixed top-0 left-1/4 -translate-x-1/2 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="fixed top-1/3 right-0 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none z-0" />
-      <div className="fixed bottom-10 left-1/3 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[180px] pointer-events-none z-0" />
+      {/* 3D BACKGROUND GLOW DECORATIONS & MESH */}
+      <div className="fixed inset-0 grid-3d-mesh opacity-20 pointer-events-none z-0" />
+      <div className="fixed top-0 left-1/4 -translate-x-1/2 w-[550px] h-[550px] bg-red-600/15 rounded-full blur-[140px] floating-3d-orb pointer-events-none z-0" />
+      <div className="fixed top-1/3 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] floating-3d-orb pointer-events-none z-0" />
+      <div className="fixed bottom-10 left-1/3 w-[650px] h-[650px] bg-amber-500/10 rounded-full blur-[180px] floating-3d-orb pointer-events-none z-0" />
 
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-xs md:text-sm font-semibold py-2 px-4 text-center shadow-lg relative z-50">
@@ -481,9 +482,9 @@ export default function App() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
                 <button
                   onClick={() => handleOpenRegister()}
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-base shadow-xl shadow-red-600/40 hover:shadow-red-600/60 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                  className="shimmer-btn px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-base shadow-xl shadow-red-600/40 hover:shadow-red-600/60 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-3"
                 >
-                  <Sparkles className="w-5 h-5" />
+                  <Sparkles className="w-5 h-5 animate-spin-slow" />
                   <span>HOZIR RO'YXATDAN O'TING</span>
                 </button>
 
@@ -491,7 +492,7 @@ export default function App() {
                   href="https://t.me/kasbtech_admin"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-4 rounded-xl glass-card hover:bg-slate-800/80 border-slate-700 text-slate-200 font-bold text-base hover:text-white transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-4 rounded-xl glass-card hover:bg-slate-800/80 border-slate-700 text-slate-200 font-bold text-base hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-5 h-5 text-sky-400" />
                   <span> Telegram Admin (@kasbtech_admin)</span>
@@ -502,11 +503,11 @@ export default function App() {
 
             {/* HERO RIGHT CARD / BANNER CAROUSEL */}
             <div className="lg:col-span-5">
-              <div className="relative glass-card p-4 sm:p-6 rounded-3xl border-red-500/30 shadow-2xl shadow-red-950/50 gradient-border-red">
+              <div className="relative glass-card p-4 sm:p-6 rounded-3xl border-red-500/30 shadow-2xl shadow-red-950/50 gradient-border-red tilt-card-3d glowing-border-animated">
                 
-                {/* FLOATING BADGE */}
-                <div className="absolute -top-4 -right-2 bg-gradient-to-r from-amber-500 to-red-600 text-slate-950 font-black text-xs px-4 py-1.5 rounded-full shadow-lg transform rotate-3 flex items-center gap-1">
-                  <Gift className="w-4 h-4 text-slate-950" />
+                {/* FLOATING 3D BADGE */}
+                <div className="absolute -top-4 -right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-xs px-4 py-1.5 rounded-full shadow-xl transform rotate-3 flex items-center gap-1.5 floating-3d-orb">
+                  <Gift className="w-4 h-4 text-slate-950 animate-bounce" />
                   <span>100% DAVLAT GRANTI</span>
                 </div>
 
@@ -968,7 +969,7 @@ export default function App() {
             {coursesList.map((course) => (
               <div
                 key={course.id}
-                className="glass-card glass-card-hover rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-slate-800 relative overflow-hidden group"
+                className="glass-card glass-card-hover tilt-card-3d rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-slate-800 relative overflow-hidden group"
               >
                 {/* HEADER ACCENT BAR */}
                 <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${course.color}`} />
@@ -1087,7 +1088,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div className="glass-card p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-red-500/40 transition-all">
+            <div className="glass-card tilt-card-3d p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-red-500/40 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-rose-400">
                 <Calendar className="w-6 h-6" />
               </div>
@@ -1097,7 +1098,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="glass-card p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-amber-500/40 transition-all">
+            <div className="glass-card tilt-card-3d p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-amber-500/40 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-amber-600/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
                 <Award className="w-6 h-6" />
               </div>
@@ -1107,7 +1108,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="glass-card p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-sky-500/40 transition-all">
+            <div className="glass-card tilt-card-3d p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-sky-500/40 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-sky-600/20 border border-sky-500/30 flex items-center justify-center text-sky-400">
                 <GraduationCap className="w-6 h-6" />
               </div>
@@ -1117,7 +1118,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="glass-card p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-emerald-500/40 transition-all">
+            <div className="glass-card tilt-card-3d p-6 rounded-3xl border-slate-800 space-y-4 text-left hover:border-emerald-500/40 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                 <FileCheck className="w-6 h-6" />
               </div>
