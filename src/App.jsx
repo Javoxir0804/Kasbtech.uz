@@ -105,24 +105,6 @@ export default function App() {
 
   const coursesList = [
     {
-      id: 'vibe',
-      title: 'AI "VIBE CODING"',
-      duration: '14 kun',
-      badge: '100% AI YORDAMIDA',
-      mentor: 'Javoxir Aliyev',
-      mentorRole: 'Kasbtech Akademiyasi Direktori & Lead AI Mentor',
-      grantEligible: true,
-      poster: '/vibe_coding_poster.jpg',
-      description: 'Dasturlashni bilmasdan turib, Sun\'iy Intellekt (AI) orqali professional dasturlar va vebsaytlar yaratishni amaliyotda o\'rganasiz! Yillab kod yozish shart emas.',
-      highlights: [
-        'To\'g\'ridan-to\'g\'ri AI bilan vebsayt & app yaratish',
-        'Frontend va backendni no-code/vibe coding orqali qurish',
-        '14 kunlik intensiv amaliy mashg\'ulotlar',
-        'Tayyor 3+ ta real loyihalar portfoliosi'
-      ],
-      color: 'from-rose-600 to-red-700'
-    },
-    {
       id: 'marketing',
       title: 'AI + Digital Marketing',
       duration: '30 kun',
@@ -131,14 +113,53 @@ export default function App() {
       mentorRole: 'Kasbtech Akademiyasi Direktori & Lead Marketing Mentor',
       grantEligible: true,
       poster: '/ai_marketing_poster.jpg',
-      description: 'Zamonaviy marketing va AI neyrotarmoqlari (ChatGPT, Midjourney va b.) yordamida biznesingiz yoki mijozlar biznesida sotuvlarni bir necha barobar oshirish sirlari!',
+      detailUrl: 'https://t.me/kasbtech_akademiyasi/21',
+      description: '"Targeting" va zamonaviy reklama strategiyalari hamda AI neyrotarmoqlari yordamida biznesda sotuvlarni oshirish sirlari!',
       highlights: [
+        '"Targeting" va zamonaviy reklama strategiyalari',
         'AI neyrotarmoqlari yordamida target va kontent yaratish',
         'Sotuv voronkalari (sales funnel) va avtomatlashtirish',
-        '30 kunlik faqat amaliyotga asoslangan darslar',
-        'Real mijozlar bilan ishlash strategiyasi'
+        '30 kunlik faqat amaliyotga asoslangan darslar'
       ],
       color: 'from-amber-500 to-red-600'
+    },
+    {
+      id: 'vibe',
+      title: 'AI (Sun’iy Intellekt) & Vibe Coding',
+      duration: '14 kun',
+      badge: '100% AI YORDAMIDA',
+      mentor: 'Javoxir Aliyev',
+      mentorRole: 'Kasbtech Akademiyasi Direktori & Lead AI Mentor',
+      grantEligible: true,
+      poster: '/vibe_coding_poster.jpg',
+      detailUrl: null,
+      description: 'Kuchli sun’iy intellekt vositalaridan foydalanish hamda dasturlashni bilmasdan turib AI orqali dasturlar va vebsaytlar yaratish!',
+      highlights: [
+        'Kuchli sun’iy intellekt vositalaridan foydalanish',
+        'To\'g\'ridan-to\'g\'ri AI bilan vebsayt & app yaratish',
+        'Frontend va backendni no-code/vibe coding orqali qurish',
+        '14 kunlik intensiv amaliy mashg\'ulotlar'
+      ],
+      color: 'from-rose-600 to-red-700'
+    },
+    {
+      id: 'smm',
+      title: 'SMM (Social Media Marketing)',
+      duration: '30 kun',
+      badge: 'SAMARALI MARKETING',
+      mentor: 'Kasbtech SMM Team',
+      mentorRole: 'Ijtimoiy Tarmoqlar Bo\'yicha Mutaxassislar',
+      grantEligible: true,
+      poster: null,
+      detailUrl: null,
+      description: 'Ijtimoiy tarmoqlarda (Instagram, Telegram, TikTok) samarali marketing va brendlarni organik rivojlantirish.',
+      highlights: [
+        'Ijtimoiy tarmoqlarda samarali marketing',
+        'Mobilografiya va visual kontent yaratish',
+        'Kopirayting va jalb qiluvchi postlar tayyorlash',
+        'Kanal va sahifalarni o\'stirish strategiyasi'
+      ],
+      color: 'from-purple-600 to-pink-600'
     },
     {
       id: 'cyber',
@@ -149,12 +170,13 @@ export default function App() {
       mentorRole: 'Xalqaro Darajadagi Kiberxavfsizlik Ekspertlari',
       grantEligible: true,
       poster: null,
-      description: 'Raqamli olamda ma\'lumotlar xavfsizligini ta\'minlovchi, kiberhujumlardan himoya qiluvchi kuchli va yuqori daromadli kiberxavfsizlik mutaxassisi bo\'ling.',
+      detailUrl: null,
+      description: 'Ma\'lumotlarni himoya qilish, kiberhujumlardan saqlanish va xavfsizlik tizimlarini professional ta\'minlash.',
       highlights: [
+        'Ma\'lumotlarni himoya qilish va xavfsizlik tizimlari',
         'Tizimlar va tarmoqlar xavfsizligini audit qilish',
         'Etik hakerlik (Ethical Hacking) va zaifliklarni topish',
-        '6 oylik to\'liq professional tayyorgarlik',
-        'Xalqaro sertifikatlarga tayyorgarlik'
+        '6 oylik to\'liq professional tayyorgarlik'
       ],
       color: 'from-blue-600 to-indigo-700'
     },
@@ -167,11 +189,12 @@ export default function App() {
       mentorRole: 'Kompyuter Savodxonligi Bo\'yicha Katta Ustoz',
       grantEligible: true,
       poster: null,
-      description: 'Barcha sohalar uchun eng zarur bo\'lgan bazaviy kompyuter bilimlari, Windows, MS Office, AI vositalari va internet xavfsizligini noldan mustahkamlang.',
+      detailUrl: null,
+      description: 'Zamonaviy texnologiyalarni chuqur o‘zlashtirish, Windows, MS Office, AI vositalari va internet xavfsizligini noldan o\'rganish.',
       highlights: [
+        'Zamonaviy texnologiyalarni chuqur o‘zlashtirish',
         'MS Word, Excel, PowerPoint mukammal o\'rganish',
         'Internetda samarali va xavfsiz ishlash ko\'nikmalari',
-        'Zamonaviy AI vositalaridan kundalik foydalanish',
         '30 kunlik noldan boshlanuvchi darslar'
       ],
       color: 'from-emerald-600 to-teal-700'
@@ -254,6 +277,14 @@ export default function App() {
 
             {/* HEADER ACTIONS */}
             <div className="flex items-center gap-3">
+              <a
+                href="tel:+998872647171"
+                className="hidden xl:flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
+              >
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <span>+998-87-264-71-71</span>
+              </a>
+
               <a
                 href="https://t.me/kasbtech_akademiyasi"
                 target="_blank"
@@ -580,6 +611,43 @@ export default function App() {
               </select>
             </div>
 
+            {/* GRANT ELIGIBILITY CRITERIA CHECKLIST */}
+            <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4 text-left">
+              <h3 className="text-lg font-extrabold text-white flex items-center gap-2">
+                <Target className="w-5 h-5 text-red-500" />
+                <span>🎯 Grant Kimlarga Beriladi? (50% dan 100% gacha TEKIN)</span>
+              </h3>
+              <p className="text-xs text-slate-300">
+                Quyidagi shartlarga javob beradigan fuqarolar grantdan foydalanish huquqiga ega va xohlagan kursimizni <strong className="text-emerald-400">MUTLAQO BEPUL</strong> o'rganishi mumkin:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-white">Yosh chegarasi:</strong> 18–50 yosh oralig‘ida bo‘lish.
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-white">Bandlik holati:</strong> Rasmiy band bo‘lmaslik.
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-white">Davlat xizmati:</strong> Davlat ishida ishlamaslik.
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-white">Talaba holati:</strong> O‘quvchi/talaba bo'lmaslik (Talabalarga <span className="text-amber-400 font-bold">20% chegirma</span>).
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* CALCULATED RESULT BOX */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800 text-center space-y-4">
               {calcStatus === 'unemployed' ? (
@@ -869,13 +937,26 @@ export default function App() {
                     <span className="text-xs font-extrabold text-emerald-400">100% BEPUL (Band bo'lmaganlarga)</span>
                   </div>
 
-                  <button
-                    onClick={() => handleOpenRegister(course.title)}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all shrink-0 flex items-center gap-1.5"
-                  >
-                    <span>Yozilish</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {course.detailUrl && (
+                      <a
+                        href={course.detailUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-400 font-bold text-xs border border-slate-700 transition-all flex items-center gap-1"
+                      >
+                        <span>Batafsil..</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <button
+                      onClick={() => handleOpenRegister(course.title)}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all shrink-0 flex items-center gap-1.5"
+                    >
+                      <span>Yozilish</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
 
               </div>
@@ -1128,10 +1209,19 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex items-center gap-6 text-xs font-medium">
-              <a href="https://t.me/kasbtech_akademiyasi" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors">Telegram Kanal</a>
-              <a href="https://t.me/kasbtech_admin" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors">Telegram Admin</a>
-              <a href="#grant" className="hover:text-red-400 transition-colors">Davlat Granti</a>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-medium">
+              <a href="tel:+998872647171" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-800/60 px-3 py-1.5 rounded-lg">
+                <Phone className="w-3.5 h-3.5" />
+                <span>+998-87-264-71-71</span>
+              </a>
+              <a href="https://t.me/kasbtech_akademiyasi" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors flex items-center gap-1 text-slate-300">
+                <Send className="w-3.5 h-3.5 text-sky-400" />
+                <span>@kasbtech_akademiyasi</span>
+              </a>
+              <a href="https://instagram.com/kasbtech_akademiyasi" target="_blank" rel="noreferrer" className="hover:text-pink-400 transition-colors flex items-center gap-1 text-slate-300">
+                <span>Instagram</span>
+              </a>
+              <a href="#grant" className="hover:text-red-400 transition-colors text-slate-300">Davlat Granti</a>
             </div>
           </div>
 
