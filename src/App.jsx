@@ -26,7 +26,10 @@ import {
   Maximize2,
   Check,
   Sparkle,
-  Gift
+  Gift,
+  FileText,
+  AlertTriangle,
+  Info
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -243,6 +246,7 @@ export default function App() {
             <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
               <a href="#kurslar" className="hover:text-red-400 transition-colors">Kurslarimiz</a>
               <a href="#grant" className="hover:text-red-400 transition-colors">Davlat Granti</a>
+              <a href="#vaucher" className="hover:text-emerald-400 transition-colors text-emerald-400 font-bold flex items-center gap-1"><FileText className="w-3.5 h-3.5" /> Vaucher Qo'llanmasi</a>
               <a href="#afzalliklar" className="hover:text-red-400 transition-colors">Nima Uchun Biz?</a>
               <a href="#ustozlar" className="hover:text-red-400 transition-colors">Ustozlar</a>
               <a href="#faq" className="hover:text-red-400 transition-colors">FAQ</a>
@@ -630,6 +634,145 @@ export default function App() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* VOUCHER GUIDE SECTION (ecosys.mehnat.uz) */}
+      <section id="vaucher" className="py-20 relative bg-slate-950/90 border-t border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center space-y-4 mb-14">
+            <span className="px-3.5 py-1.5 rounded-full bg-emerald-950 border border-emerald-800/60 text-emerald-400 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5">
+              <FileText className="w-4 h-4" /> 📌 RASMIY QO'LLANMA
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-white">
+              Vaucher Olish Uchun <span className="gradient-text-gold">Onlayn Ariza</span> Topshirish
+            </h2>
+            <p className="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+              Davlat granti vaucherini <a href="https://ecosys.mehnat.uz/service/87" target="_blank" rel="noreferrer" className="text-emerald-400 font-bold underline hover:text-emerald-300">ecosys.mehnat.uz</a> portali orqali olish tartibi va bosqichlari.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 sm:p-10 rounded-3xl border-emerald-500/30 shadow-2xl space-y-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            {/* STEPS TIMELINE GRID */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-extrabold text-white flex items-center gap-2">
+                <span className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-black">⌛️</span>
+                <span>Ariza Topshirish Bosqichlari (5 qadam):</span>
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3 relative hover:border-emerald-500/50 transition-all">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-slate-950 font-black text-sm flex items-center justify-center">1</div>
+                  <h4 className="font-bold text-sm text-white">1. Saytga kirish</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    <a href="https://ecosys.mehnat.uz" target="_blank" rel="noreferrer" className="text-emerald-400 underline font-semibold">ecosys.mehnat.uz</a> portali sahifasiga kiring.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3 relative hover:border-emerald-500/50 transition-all">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-slate-950 font-black text-sm flex items-center justify-center">2</div>
+                  <h4 className="font-bold text-sm text-white">2. Bo'limni tanlash</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    "Kasbiy ta’lim tizimini rivojlantirish" bo‘limiga o'ting.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3 relative hover:border-emerald-500/50 transition-all">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-slate-950 font-black text-sm flex items-center justify-center">3</div>
+                  <h4 className="font-bold text-sm text-white">3. Xizmatni ochish</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    “Vaucher olish uchun ariza” xizmatida “Xizmatdan foydalanish”ni bosing.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3 relative hover:border-emerald-500/50 transition-all">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-slate-950 font-black text-sm flex items-center justify-center">4</div>
+                  <h4 className="font-bold text-sm text-white">4. Yo'nalish tanlash</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Doimiy yashash joyi hamda o'quv yo‘nalishini tanlang.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3 relative hover:border-emerald-500/50 transition-all sm:col-span-2 lg:col-span-1">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-slate-950 font-black text-sm flex items-center justify-center">5</div>
+                  <h4 className="font-bold text-sm text-white">5. Arizani yuborish</h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Oferta talablariga roziman bandini belgilab, arizani yuboring.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            {/* IMPORTANT WARNING & NOTES BOX */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+              
+              <div className="bg-red-950/40 border border-red-800/60 p-5 rounded-2xl space-y-3">
+                <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
+                  <AlertTriangle className="w-5 h-5 shrink-0" />
+                  <span>⚠️ Muhim Eslatma (Cheklovlar)</span>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Quyidagi holatlarda tizim ariza yuborishni cheklaydi:
+                </p>
+                <ul className="space-y-2 text-xs text-rose-200">
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400 font-bold">❌</span> Fuqaroning rasmiy bandligi aniqlansa
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400 font-bold">❌</span> Yashash hududi Bandlik bo‘limi smetasida mablag‘ yetarli bo‘lmasa
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-sky-950/40 border border-sky-800/60 p-5 rounded-2xl space-y-3">
+                <div className="flex items-center gap-2 text-sky-400 font-bold text-sm">
+                  <Info className="w-5 h-5 shrink-0" />
+                  <span>💻 Avtomatik Tekshiruv & Natija</span>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-sky-400">👉</span>
+                    <span>Tekshiruvlar tizim tomonidan avtomatik amalga oshiriladi.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-sky-400">👉</span>
+                    <span>Ariza holati shaxsiy kabinet orqali kuzatiladi.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-emerald-400 font-bold">👉</span>
+                    <span className="text-white font-bold">Tasdiqlangach, vaucherni yuklab olish mumkin.</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            {/* CALL TO ACTION BUTTONS */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800/80">
+              <div className="text-xs text-slate-400 text-center sm:text-left">
+                💬 Savollar bo‘lsa, hududingizdagi <strong className="text-slate-200">Bandlik bo‘limiga</strong> murojaat qilishingiz mumkin.
+              </div>
+
+              <div className="flex items-center gap-3 shrink-0">
+                <a
+                  href="https://ecosys.mehnat.uz/service/87"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-slate-950 font-black text-sm shadow-lg shadow-emerald-600/30 transition-all inline-flex items-center gap-2"
+                >
+                  <span>ecosys.mehnat.uz Saytiga O'tish</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
