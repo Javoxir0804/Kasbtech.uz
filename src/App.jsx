@@ -110,7 +110,7 @@ export default function App() {
       import.meta.env.VITE_TELEGRAM_CHAT_ID
     ].filter(Boolean);
 
-    // Send lead to Telegram Bot API (All chats simultaneously)
+    // Send lead to Telegram Bot API (All chats simultaneously in background)
     for (const chatId of CHAT_IDS) {
       try {
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -126,19 +126,6 @@ export default function App() {
         console.error('Telegram bot send error:', err);
       }
     }
-
-    // Redirect to Telegram Bot with pre-filled message
-    const text = encodeURIComponent(
-      `🚀 KASBTECH AKADEMIYASI - YANGI ARIZA!\n\n` +
-      `👤 Ism: ${fullName}\n` +
-      `📞 Telefon: ${phoneNumber}\n` +
-      `📚 Tanlangan Kurs: ${selectedCourse}\n` +
-      `🎓 Maqomi: ${categoryText}`
-    );
-
-    setTimeout(() => {
-      window.open(`https://t.me/Kasbtechlidbot?start=lead&text=${text}`, '_blank');
-    }, 1200);
   };
 
   const coursesList = [
@@ -1470,34 +1457,53 @@ export default function App() {
                     className="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-sm shadow-xl shadow-red-600/30 transition-all flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Yuborish & Telegramga O'tish</span>
+                    <span>Arizani Yuborish</span>
                   </button>
 
                 </form>
 
               </div>
             ) : (
-              <div className="space-y-6 text-center py-4">
+              <div className="space-y-5 text-center py-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-black text-white">Arizangiz Qabul Qilindi!</h3>
-                  <p className="text-xs text-slate-300 max-w-xs mx-auto">
-                    Siz Telegram orqali admin profiliga yo'naltirildingiz. Agar Telegram avtomatik ochilmagan bo'lsa, quyidagi tugmani bosing:
+                  <h3 className="text-2xl font-black text-white">🎉 Arizangiz Muvaffaqiyatli Qabul Qilindi!</h3>
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
+                    Ma'lumotlaringiz qabul qilindi. Mutaxassislarimiz tez orada siz bilan bog'lanishadi.
                   </p>
                 </div>
 
-                <a
-                  href={`https://t.me/kasbtech_admin?text=${encodeURIComponent(`Salom, men ${fullName}. Kasbtech Akademiyasining ${selectedCourse} kursiga ariza qoldirdim.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-sm shadow-lg transition-all"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Telegram Admiga Yozish (@kasbtech_admin)</span>
-                </a>
+                <div className="flex flex-col gap-2.5 pt-2">
+                  <a
+                    href={`https://t.me/kasbtech_admin?text=${encodeURIComponent(`Salom, men ${fullName}. Kasbtech Akademiyasining ${selectedCourse} kursiga ariza qoldirdim.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-extrabold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Admin Bilan Bog'lanish (@kasbtech_admin)</span>
+                  </a>
+
+                  <a
+                    href="https://t.me/kasbtech_akademiyasi"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-400 font-extrabold text-xs sm:text-sm border border-slate-700 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Telegram Kanalimizga A'zo Bo'lish</span>
+                  </a>
+
+                  <button
+                    onClick={() => setIsRegisterModalOpen(false)}
+                    className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 font-bold text-xs border border-slate-800 transition-all"
+                  >
+                    Oynani Yopish
+                  </button>
+                </div>
               </div>
             )}
 
