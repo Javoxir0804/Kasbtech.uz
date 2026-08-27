@@ -595,85 +595,92 @@ export default function App() {
                   {(() => {
                     const current = coursesList[heroCarouselIndex];
                     return (
-                      <div className="relative group rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900 shadow-xl transition-all min-h-[220px] sm:min-h-[250px] flex flex-col justify-between">
+                      <div className="relative group rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-xl transition-all flex flex-col justify-between">
                         
-                        {/* PREV & NEXT MANUAL ARROW BUTTONS */}
+                        {/* PREV & NEXT MANUAL ARROW BUTTONS (z-30 with stopPropagation) */}
                         <button
                           type="button"
                           onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
                           }}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-2.5 rounded-full bg-slate-900/80 hover:bg-red-600 text-white backdrop-blur-md border border-slate-700 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl"
                           aria-label="Previous course"
                         >
-                          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
 
                         <button
                           type="button"
                           onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
                           }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-2.5 rounded-full bg-slate-900/80 hover:bg-red-600 text-white backdrop-blur-md border border-slate-700 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl"
                           aria-label="Next course"
                         >
-                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
 
                         {/* POSTER IMAGE OR CUSTOM HIGH-TECH GRAPHIC CARD */}
                         {current.poster ? (
-                          <div 
-                            onClick={() => setLightboxImage(current.poster)}
-                            className="relative w-full h-52 sm:h-64 cursor-pointer overflow-hidden group/img"
-                          >
+                          <div className="relative w-full h-[320px] sm:h-[380px] bg-slate-950 flex items-center justify-center p-2">
                             <img
                               src={current.poster}
                               alt={current.title}
-                              className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
+                              className="w-full h-full object-contain rounded-xl shadow-lg"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent p-4 flex flex-col justify-end">
-                              <span className="text-[10px] font-black bg-red-600 text-white px-2.5 py-0.5 rounded-full w-max mb-1 shadow-md uppercase tracking-wider">
+                            
+                            {/* DEDICATED ZOOM LIGHTBOX BUTTON */}
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setLightboxImage(current.poster);
+                              }}
+                              className="absolute top-4 right-4 z-20 bg-slate-900/80 hover:bg-red-600 backdrop-blur-md px-2.5 py-1.5 rounded-xl border border-slate-700 text-white text-xs font-bold transition-all flex items-center gap-1 shadow-lg"
+                              title="Kattalashtirib ko'rish"
+                            >
+                              <Maximize2 className="w-3.5 h-3.5" />
+                              <span className="hidden sm:inline">Kattalashtirish</span>
+                            </button>
+
+                            <div className="absolute bottom-2 left-2 right-2 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-3 rounded-b-xl flex items-center justify-between pointer-events-none">
+                              <span className="text-[10px] font-black bg-red-600 text-white px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-wider">
                                 {current.badge}
                               </span>
-                              <h4 className="text-base sm:text-lg font-black text-white leading-tight">
-                                {current.title}
-                              </h4>
-                              <p className="text-xs text-slate-300 font-semibold mt-0.5">
-                                Muddat: <span className="text-amber-400 font-extrabold">{current.duration}</span>
-                              </p>
-                            </div>
-
-                            <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md p-1.5 rounded-lg border border-white/20 text-white opacity-0 group-hover/img:opacity-100 transition-opacity">
-                              <Maximize2 className="w-4 h-4" />
+                              <span className="text-xs text-amber-400 font-extrabold bg-amber-950/80 border border-amber-800/60 px-2 py-0.5 rounded-md">
+                                ⏳ {current.duration}
+                              </span>
                             </div>
                           </div>
                         ) : (
                           <div 
                             onClick={() => handleOpenRegister(current.title)}
-                            className={`w-full h-52 sm:h-64 cursor-pointer p-5 flex flex-col justify-between bg-gradient-to-br ${current.color} relative overflow-hidden group/card`}
+                            className={`w-full h-[320px] sm:h-[380px] cursor-pointer p-6 flex flex-col justify-between bg-gradient-to-br ${current.color} relative overflow-hidden group/card rounded-2xl`}
                           >
                             <div className="absolute inset-0 grid-3d-mesh opacity-30" />
-                            <div className="relative z-10 space-y-2">
-                              <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] font-extrabold text-white border border-white/20 uppercase tracking-wider">
-                                <Sparkles className="w-3 h-3 text-amber-300" />
+                            <div className="relative z-10 space-y-3">
+                              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-xs font-extrabold text-white border border-white/20 uppercase tracking-wider">
+                                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                                 <span>{current.badge}</span>
                               </div>
-                              <h4 className="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-md">
+                              <h4 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-md">
                                 {current.title}
                               </h4>
-                              <p className="text-xs text-white/90 line-clamp-2 leading-relaxed">
+                              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
                                 {current.description}
                               </p>
                             </div>
 
-                            <div className="relative z-10 pt-3 border-t border-white/20 flex items-center justify-between">
+                            <div className="relative z-10 pt-4 border-t border-white/20 flex items-center justify-between">
                               <div>
-                                <span className="text-[10px] text-white/80 uppercase tracking-wider block">Davumiya:</span>
-                                <span className="text-sm font-black text-amber-300">{current.duration}</span>
+                                <span className="text-[10px] text-white/80 uppercase tracking-wider block">Davomiyligi:</span>
+                                <span className="text-base font-black text-amber-300">{current.duration}</span>
                               </div>
-                              <span className="px-3 py-1.5 rounded-xl bg-white text-slate-950 font-black text-xs shadow-lg group-hover/card:scale-105 transition-transform">
+                              <span className="px-4 py-2 rounded-xl bg-white text-slate-950 font-black text-xs shadow-lg group-hover/card:scale-105 transition-transform">
                                 Kursga Yozilish →
                               </span>
                             </div>
