@@ -104,25 +104,26 @@ export default function App() {
     // Telegram Bot Integration (@Kasbtechlidbot)
     const BOT_TOKEN = '8617319521:AAHSEZcxPr_ffUMIY3EuAMwq2MSCeMC_-hc';
     const CHAT_IDS = [
+      '-1004429735550', // Kasbtech Akademiyasi hodimlari group
+      '6331803768',     // Javoxir Aliyev
+      '8309099086',     // Kasbtech Admin
       import.meta.env.VITE_TELEGRAM_CHAT_ID
     ].filter(Boolean);
 
-    // Send lead to Telegram Bot API
-    if (CHAT_IDS.length > 0) {
-      for (const chatId of CHAT_IDS) {
-        try {
-          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: rawMessage,
-              parse_mode: 'HTML'
-            })
-          });
-        } catch (err) {
-          console.error('Telegram bot send error:', err);
-        }
+    // Send lead to Telegram Bot API (All chats simultaneously)
+    for (const chatId of CHAT_IDS) {
+      try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: rawMessage,
+            parse_mode: 'HTML'
+          })
+        });
+      } catch (err) {
+        console.error('Telegram bot send error:', err);
       }
     }
 
