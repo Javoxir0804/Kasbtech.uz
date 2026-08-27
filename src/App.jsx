@@ -559,9 +559,10 @@ export default function App() {
                   if (!touchStartX) return;
                   const endX = e.changedTouches[0].clientX;
                   const diff = touchStartX - endX;
-                  if (diff > 35) {
+                  // Only treat as swipe if user dragged finger more than 40px
+                  if (diff > 40) {
                     setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
-                  } else if (diff < -35) {
+                  } else if (diff < -40) {
                     setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
                   }
                   setTouchStartX(0);
@@ -570,7 +571,7 @@ export default function App() {
               >
                 
                 {/* FLOATING 3D BADGE */}
-                <div className="absolute -top-3.5 right-2 sm:-right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-xl transform rotate-2 sm:rotate-3 flex items-center gap-1 floating-3d-orb z-20">
+                <div className="absolute -top-3.5 right-2 sm:-right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-xl transform rotate-2 sm:rotate-3 flex items-center gap-1 floating-3d-orb z-20 pointer-events-none">
                   <Gift className="w-3.5 h-3.5 text-slate-950 animate-bounce" />
                   <span>100% DAVLAT GRANTI</span>
                 </div>
@@ -597,7 +598,7 @@ export default function App() {
                     return (
                       <div className="relative group rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-xl transition-all flex flex-col justify-between">
                         
-                        {/* PREV & NEXT MANUAL ARROW BUTTONS (z-30 with stopPropagation) */}
+                        {/* PREV MANUAL ARROW BUTTON */}
                         <button
                           type="button"
                           onClick={(e) => {
@@ -605,12 +606,18 @@ export default function App() {
                             e.stopPropagation();
                             setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
                           }}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-2.5 rounded-full bg-slate-900/80 hover:bg-red-600 text-white backdrop-blur-md border border-slate-700 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl"
-                          aria-label="Previous course"
+                          onTouchEnd={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
+                          }}
+                          className="absolute left-2.5 top-1/2 -translate-y-1/2 z-40 p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-red-600 text-white backdrop-blur-lg border border-slate-700/80 transition-all opacity-95 hover:opacity-100 hover:scale-110 active:scale-90 shadow-2xl cursor-pointer"
+                          aria-label="Oldingi kurs"
                         >
                           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
 
+                        {/* NEXT MANUAL ARROW BUTTON */}
                         <button
                           type="button"
                           onClick={(e) => {
@@ -618,8 +625,13 @@ export default function App() {
                             e.stopPropagation();
                             setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
                           }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-2.5 rounded-full bg-slate-900/80 hover:bg-red-600 text-white backdrop-blur-md border border-slate-700 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl"
-                          aria-label="Next course"
+                          onTouchEnd={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
+                          }}
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 z-40 p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-red-600 text-white backdrop-blur-lg border border-slate-700/80 transition-all opacity-95 hover:opacity-100 hover:scale-110 active:scale-90 shadow-2xl cursor-pointer"
+                          aria-label="Keyingi kurs"
                         >
                           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
