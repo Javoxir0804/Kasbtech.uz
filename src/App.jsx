@@ -12,6 +12,7 @@ import {
   MessageSquare,
   ArrowRight,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   ExternalLink,
   Laptop,
@@ -41,6 +42,11 @@ export default function App() {
   const [selectedCourse, setSelectedCourse] = useState('AI "VIBE CODING" (14 kun)');
   const [lightboxImage, setLightboxImage] = useState(null);
 
+  // Hero Course Carousel States
+  const [heroCarouselIndex, setHeroCarouselIndex] = useState(0);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+
   // Form inputs
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -65,6 +71,15 @@ export default function App() {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Auto-rotate Hero Carousel every 3.5 seconds (pauses on hover/touch)
+  useEffect(() => {
+    if (isCarouselPaused) return;
+    const carouselInterval = setInterval(() => {
+      setHeroCarouselIndex(prev => (prev + 1) % coursesList.length);
+    }, 3500);
+    return () => clearInterval(carouselInterval);
+  }, [isCarouselPaused]);
 
   // Open modal pre-selected course
   const handleOpenRegister = (courseName) => {
@@ -534,9 +549,25 @@ export default function App() {
 
             </div>
 
-            {/* HERO RIGHT CARD / BANNER CAROUSEL */}
+            {/* HERO RIGHT CARD / AUTO-ROTATING SWIPEABLE CAROUSEL */}
             <div className="lg:col-span-5">
-              <div className="relative glass-card p-4 sm:p-6 rounded-3xl border-red-500/30 shadow-2xl shadow-red-950/50 gradient-border-red tilt-card-3d glowing-border-animated">
+              <div 
+                onMouseEnter={() => setIsCarouselPaused(true)}
+                onMouseLeave={() => setIsCarouselPaused(false)}
+                onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+                onTouchEnd={(e) => {
+                  if (!touchStartX) return;
+                  const endX = e.changedTouches[0].clientX;
+                  const diff = touchStartX - endX;
+                  if (diff > 35) {
+                    setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
+                  } else if (diff < -35) {
+                    setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
+                  }
+                  setTouchStartX(0);
+                }}
+                className="relative glass-card p-4 sm:p-6 rounded-3xl border-red-500/30 shadow-2xl shadow-red-950/50 gradient-border-red tilt-card-3d glowing-border-animated select-none"
+              >
                 
                 {/* FLOATING 3D BADGE */}
                 <div className="absolute -top-3.5 right-2 sm:-right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-xl transform rotate-2 sm:rotate-3 flex items-center gap-1 floating-3d-orb z-20">
@@ -545,75 +576,162 @@ export default function App() {
                 </div>
 
                 <div className="space-y-4">
+                  
+                  {/* CAROUSEL HEADER */}
                   <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Top Kurslarimiz Posters</span>
-                    <span className="text-xs bg-red-950 text-red-400 px-2.5 py-1 rounded-full border border-red-800/50 font-semibold">2026-yil Qabul</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Top Kurslarimiz</span>
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-800 text-red-400 border border-slate-700">
+                        {heroCarouselIndex + 1} / {coursesList.length}
+                      </span>
+                    </div>
+                    <span className="text-[10px] sm:text-xs bg-red-950 text-red-400 px-2.5 py-1 rounded-full border border-red-800/50 font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                      <span>2026 Qabul</span>
+                    </span>
                   </div>
 
-                  {/* POSTERS PREVIEW GRID */}
-                  <div className="grid grid-cols-2 gap-3">
-                    
-                    {/* VIBE CODING POSTER */}
-                    <div 
-                      onClick={() => setLightboxImage('/vibe_coding_poster.jpg')}
-                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-900 shadow-md hover:border-red-500 transition-all"
-                    >
-                      <img
-                        src="/vibe_coding_poster.jpg"
-                        alt="AI Vibe Coding poster"
-                        className="w-full h-auto object-cover sm:object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl"
+                  {/* CAROUSEL ACTIVE SLIDE DISPLAY */}
+                  {(() => {
+                    const current = coursesList[heroCarouselIndex];
+                    return (
+                      <div className="relative group rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900 shadow-xl transition-all min-h-[220px] sm:min-h-[250px] flex flex-col justify-between">
+                        
+                        {/* PREV & NEXT MANUAL ARROW BUTTONS */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHeroCarouselIndex((prev) => (prev - 1 + coursesList.length) % coursesList.length);
+                          }}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95"
+                          aria-label="Previous course"
+                        >
+                          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHeroCarouselIndex((prev) => (prev + 1) % coursesList.length);
+                          }}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95"
+                          aria-label="Next course"
+                        >
+                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+
+                        {/* POSTER IMAGE OR CUSTOM HIGH-TECH GRAPHIC CARD */}
+                        {current.poster ? (
+                          <div 
+                            onClick={() => setLightboxImage(current.poster)}
+                            className="relative w-full h-52 sm:h-64 cursor-pointer overflow-hidden group/img"
+                          >
+                            <img
+                              src={current.poster}
+                              alt={current.title}
+                              className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent p-4 flex flex-col justify-end">
+                              <span className="text-[10px] font-black bg-red-600 text-white px-2.5 py-0.5 rounded-full w-max mb-1 shadow-md uppercase tracking-wider">
+                                {current.badge}
+                              </span>
+                              <h4 className="text-base sm:text-lg font-black text-white leading-tight">
+                                {current.title}
+                              </h4>
+                              <p className="text-xs text-slate-300 font-semibold mt-0.5">
+                                Muddat: <span className="text-amber-400 font-extrabold">{current.duration}</span>
+                              </p>
+                            </div>
+
+                            <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md p-1.5 rounded-lg border border-white/20 text-white opacity-0 group-hover/img:opacity-100 transition-opacity">
+                              <Maximize2 className="w-4 h-4" />
+                            </div>
+                          </div>
+                        ) : (
+                          <div 
+                            onClick={() => handleOpenRegister(current.title)}
+                            className={`w-full h-52 sm:h-64 cursor-pointer p-5 flex flex-col justify-between bg-gradient-to-br ${current.color} relative overflow-hidden group/card`}
+                          >
+                            <div className="absolute inset-0 grid-3d-mesh opacity-30" />
+                            <div className="relative z-10 space-y-2">
+                              <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] font-extrabold text-white border border-white/20 uppercase tracking-wider">
+                                <Sparkles className="w-3 h-3 text-amber-300" />
+                                <span>{current.badge}</span>
+                              </div>
+                              <h4 className="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-md">
+                                {current.title}
+                              </h4>
+                              <p className="text-xs text-white/90 line-clamp-2 leading-relaxed">
+                                {current.description}
+                              </p>
+                            </div>
+
+                            <div className="relative z-10 pt-3 border-t border-white/20 flex items-center justify-between">
+                              <div>
+                                <span className="text-[10px] text-white/80 uppercase tracking-wider block">Davumiya:</span>
+                                <span className="text-sm font-black text-amber-300">{current.duration}</span>
+                              </div>
+                              <span className="px-3 py-1.5 rounded-xl bg-white text-slate-950 font-black text-xs shadow-lg group-hover/card:scale-105 transition-transform">
+                                Kursga Yozilish →
+                              </span>
+                            </div>
+                          </div>
+                        )}
+
+                      </div>
+                    );
+                  })()}
+
+                  {/* CAROUSEL PAGINATION DOT INDICATORS */}
+                  <div className="flex items-center justify-center gap-1.5 pt-1">
+                    {coursesList.map((course, idx) => (
+                      <button
+                        key={course.id}
+                        type="button"
+                        onClick={() => setHeroCarouselIndex(idx)}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          idx === heroCarouselIndex
+                            ? 'w-7 bg-gradient-to-r from-red-500 to-rose-600 shadow-md shadow-red-500/50'
+                            : 'w-2 bg-slate-800 hover:bg-slate-700'
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-3 pointer-events-none">
-                        <span className="text-[10px] font-bold bg-red-600 text-white px-2 py-0.5 rounded w-max mb-1">14 KUN</span>
-                        <span className="text-xs font-black text-white leading-tight">AI VIBE CODING</span>
-                      </div>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                        <Maximize2 className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-
-                    {/* AI MARKETING POSTER */}
-                    <div 
-                      onClick={() => setLightboxImage('/ai_marketing_poster.jpg')}
-                      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-700/60 bg-slate-900 shadow-md hover:border-red-500 transition-all"
-                    >
-                      <img
-                        src="/ai_marketing_poster.jpg"
-                        alt="AI Digital Marketing poster"
-                        className="w-full h-auto object-cover sm:object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-3 pointer-events-none">
-                        <span className="text-[10px] font-bold bg-amber-500 text-slate-950 px-2 py-0.5 rounded w-max mb-1">30 KUN</span>
-                        <span className="text-xs font-black text-white leading-tight">AI + MARKETING</span>
-                      </div>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                        <Maximize2 className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-
+                    ))}
                   </div>
 
-                  {/* QUICK STATS INSIDE HERO CARD */}
-                  <div className="bg-slate-900/90 p-4 rounded-2xl border border-slate-800/80 space-y-3">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Dars Formati:</span>
-                      <span className="font-bold text-white">Haftada 6 Kun (Intensiv)</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Band Fuqarolarga:</span>
-                      <span className="font-extrabold text-emerald-400">100% TEKIN (Grant)</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Talaba / O'quvchilarga:</span>
-                      <span className="font-extrabold text-amber-400">20% CHEGIRMA</span>
-                    </div>
-                  </div>
+                  {/* ACTIVE COURSE QUICK STATS */}
+                  {(() => {
+                    const activeCourse = coursesList[heroCarouselIndex];
+                    return (
+                      <div className="bg-slate-900/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800/80 space-y-2.5">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Tanlangan Kurs:</span>
+                          <span className="font-extrabold text-white truncate max-w-[200px]">{activeCourse.title}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Dars Formati:</span>
+                          <span className="font-bold text-white">Haftada 6 Kun (Intensiv)</span>
+                        </div>
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Band Fuqarolarga:</span>
+                          <span className="font-extrabold text-emerald-400">100% TEKIN (Grant)</span>
+                        </div>
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Talaba / O'quvchilarga:</span>
+                          <span className="font-extrabold text-amber-400">20% CHEGIRMA</span>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   <button
-                    onClick={() => handleOpenRegister()}
-                    className="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm shadow-lg transition-all"
+                    onClick={() => handleOpenRegister(coursesList[heroCarouselIndex].title)}
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all flex items-center justify-center gap-2"
                   >
-                    Joyni Band Qilish →
+                    <span>{coursesList[heroCarouselIndex].title} Joyni Band Qilish</span>
+                    <ArrowRight className="w-4 h-4" />
                   </button>
 
                 </div>
