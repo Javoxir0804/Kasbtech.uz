@@ -642,6 +642,9 @@ export default function App() {
                             <img
                               src={current.poster}
                               alt={current.title}
+                              loading="eager"
+                              fetchPriority="high"
+                              decoding="async"
                               className="w-full h-full object-contain rounded-xl shadow-lg"
                             />
                             
@@ -1333,6 +1336,8 @@ export default function App() {
                 <img
                   src="/javoxir_aliyev.jpg"
                   alt="Javoxir Aliyev - Kasbtech Akademiyasi Direktori"
+                  loading="eager"
+                  decoding="async"
                   className="w-32 h-40 sm:w-44 sm:h-52 rounded-2xl object-cover object-top border-2 border-red-500/60 shadow-xl shadow-red-950/60 group-hover:scale-[1.03] transition-transform duration-300"
                 />
                 <span className="absolute -bottom-2.5 -right-2 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[10px] font-black px-2.5 py-1 rounded-md shadow-lg border border-red-400/40">

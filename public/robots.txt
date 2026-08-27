@@ -1,0 +1,6 @@
+# Robots.txt for Kasbtech Akademiyasi (https://kasbtech.uz)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://kasbtech.uz/sitemap.xml
