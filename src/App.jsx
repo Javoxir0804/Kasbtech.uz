@@ -255,37 +255,43 @@ export default function App() {
 
         {/* MAIN NAVBAR */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-4">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
             
             {/* LOGO */}
-            <a href="#" className="flex items-center gap-2.5 group shrink-0 mr-6 xl:mr-10">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
+            <a href="#" className="flex items-center gap-2.5 group shrink-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col shrink-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-extrabold text-lg tracking-tight text-white">KASBTECH</span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
+                  <span className="font-black text-base sm:text-lg tracking-tight text-white">KASBTECH</span>
+                  <span className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
                 </div>
                 <span className="text-[10px] text-slate-400 font-medium hidden sm:block">Zamonaviy Kasblar Akademiyasi</span>
               </div>
             </a>
 
-            {/* NAV LINKS (Visible on XL viewports 1280px+ with clear spacing) */}
-            <nav className="hidden xl:flex items-center gap-5 text-xs font-semibold text-slate-300 shrink-0">
-              <a href="#kurslar" className="hover:text-red-400 transition-colors">Kurslarimiz</a>
-              <a href="#grant" className="hover:text-red-400 transition-colors">Davlat Granti</a>
-              <a href="#vaucher" className="hover:text-emerald-400 transition-colors text-emerald-400 font-bold flex items-center gap-1"><FileText className="w-3.5 h-3.5" /> Vaucher Qo'llanmasi</a>
-              <a href="#afzalliklar" className="hover:text-red-400 transition-colors">Nima Uchun Biz?</a>
-              <a href="#ustozlar" className="hover:text-red-400 transition-colors">Ustozlar</a>
-              <a href="#faq" className="hover:text-red-400 transition-colors">FAQ</a>
+            {/* NAV LINKS (Visible on LG viewports 1024px+) */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs font-semibold text-slate-300 shrink-0">
+              <a href="#kurslar" className="px-3 py-1.5 rounded-lg hover:bg-slate-800/80 hover:text-white transition-all">Kurslarimiz</a>
+              <a href="#grant" className="px-3 py-1.5 rounded-lg hover:bg-slate-800/80 hover:text-rose-400 transition-all flex items-center gap-1">
+                <span>Davlat Granti</span>
+                <span className="px-1.5 py-0.2 rounded bg-red-950 text-rose-400 text-[9px] font-bold border border-red-800/60">100%</span>
+              </a>
+              <a href="#vaucher" className="px-3 py-1.5 rounded-lg hover:bg-emerald-950/50 text-emerald-400 font-bold flex items-center gap-1.5 transition-all">
+                <FileText className="w-3.5 h-3.5" />
+                <span>Vaucher Qo'llanmasi</span>
+              </a>
+              <a href="#afzalliklar" className="px-3 py-1.5 rounded-lg hover:bg-slate-800/80 hover:text-white transition-all">Nima Uchun Biz?</a>
+              <a href="#ustozlar" className="px-3 py-1.5 rounded-lg hover:bg-slate-800/80 hover:text-white transition-all">Ustozlar</a>
+              <a href="#faq" className="px-3 py-1.5 rounded-lg hover:bg-slate-800/80 hover:text-white transition-all">FAQ</a>
             </nav>
 
             {/* HEADER ACTIONS */}
-            <div className="flex items-center gap-2.5 shrink-0">
+            <div className="flex items-center gap-2 shrink-0">
               <a
                 href="tel:+998872647171"
-                className="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
+                className="hidden 2xl:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
               >
                 <Phone className="w-3.5 h-3.5 text-emerald-400" />
                 <span>+998-87-264-71-71</span>
@@ -298,21 +304,21 @@ export default function App() {
                 className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-xs font-semibold text-sky-400 transition-all"
               >
                 <Send className="w-3.5 h-3.5 text-sky-400" />
-                <span>Telegram</span>
+                <span className="hidden md:inline">Telegram</span>
               </a>
 
               <button
                 onClick={() => handleOpenRegister()}
-                className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
+                className="flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap shimmer-btn"
               >
                 <span>Ro'yxatdan O'tish</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              {/* HAMBURGER BUTTON FOR SCREENS < 1280px (xl:hidden) */}
+              {/* HAMBURGER BUTTON FOR SCREENS < 1024px (lg:hidden) */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="xl:hidden p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5 text-red-500" /> : <Menu className="w-5 h-5 text-white" />}
@@ -324,12 +330,12 @@ export default function App() {
 
         {/* MOBILE & TABLET NAVIGATION DRAWER */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden glass-nav border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl">
-            <nav className="flex flex-col space-y-2.5 font-semibold text-slate-200 text-sm">
+          <div className="lg:hidden bg-[#090d16]/98 border-t border-slate-800/90 px-4 pt-4 pb-6 space-y-4 animate-slide-down shadow-2xl backdrop-blur-2xl">
+            <nav className="flex flex-col space-y-2 font-semibold text-slate-200 text-sm">
               <a
                 href="#kurslar"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+                className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
               >
                 <span>📚 Kurslarimiz</span>
                 <ChevronRight className="w-4 h-4 text-slate-500" />
@@ -338,16 +344,16 @@ export default function App() {
               <a
                 href="#grant"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between text-rose-300 font-bold"
+                className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between text-rose-300 font-bold"
               >
-                <span>🎁 Davlat Granti (100% BEPUL)</span>
+                <span className="flex items-center gap-2">🎁 Davlat Granti <span className="text-[10px] bg-red-950 text-rose-400 px-2 py-0.5 rounded border border-red-800">100% BEPUL</span></span>
                 <ChevronRight className="w-4 h-4 text-rose-400" />
               </a>
 
               <a
                 href="#vaucher"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-emerald-400 font-bold hover:bg-emerald-950/60 transition-colors flex items-center justify-between"
+                className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-emerald-400 font-bold hover:bg-emerald-950/60 transition-colors flex items-center justify-between"
               >
                 <span className="flex items-center gap-2"><FileText className="w-4 h-4" /> 📌 Vaucher Qo'llanmasi</span>
                 <ChevronRight className="w-4 h-4 text-emerald-500" />
@@ -356,7 +362,7 @@ export default function App() {
               <a
                 href="#afzalliklar"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+                className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
               >
                 <span>🌟 Nima Uchun Biz?</span>
                 <ChevronRight className="w-4 h-4 text-slate-500" />
@@ -365,7 +371,7 @@ export default function App() {
               <a
                 href="#ustozlar"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+                className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
               >
                 <span>👨‍🏫 Ustozlarimiz</span>
                 <ChevronRight className="w-4 h-4 text-slate-500" />
@@ -374,17 +380,17 @@ export default function App() {
               <a
                 href="#faq"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
+                className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:bg-slate-800 transition-colors flex items-center justify-between"
               >
                 <span>❓ FAQ (Savollar)</span>
                 <ChevronRight className="w-4 h-4 text-slate-500" />
               </a>
             </nav>
 
-            <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
               <a
                 href="tel:+998872647171"
-                className="w-full py-3.5 rounded-xl bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-bold text-xs flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-bold text-xs flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <span>+998-87-264-71-71 (Qo'ng'iroq qilish)</span>
@@ -394,7 +400,7 @@ export default function App() {
                 href="https://t.me/kasbtech_akademiyasi"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3.5 rounded-xl bg-sky-950/80 border border-sky-800 text-sky-400 font-bold text-xs flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-sky-950/80 border border-sky-800 text-sky-400 font-bold text-xs flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4 text-sky-400" />
                 <span>Telegram Kanal (@kasbtech_akademiyasi)</span>
@@ -405,7 +411,7 @@ export default function App() {
                   setIsMobileMenuOpen(false);
                   handleOpenRegister();
                 }}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 shimmer-btn"
               >
                 <span>Ro'yxatdan O'tish</span>
                 <ArrowRight className="w-4 h-4" />
