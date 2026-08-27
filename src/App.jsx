@@ -74,7 +74,7 @@ export default function App() {
   };
 
   // Submit registration form
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
     confetti({
@@ -91,6 +91,42 @@ export default function App() {
         ? 'Talaba / O\'quvchi (20% Chegirma)'
         : 'Boshqa';
 
+    const timeString = new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' });
+
+    const rawMessage =
+      `🚀 <b>KASBTECH AKADEMIYASI - YANGI ARIZA!</b>\n\n` +
+      `👤 <b>Ism:</b> ${fullName}\n` +
+      `📞 <b>Telefon:</b> ${phoneNumber}\n` +
+      `📚 <b>Tanlangan Kurs:</b> ${selectedCourse}\n` +
+      `🎓 <b>Maqomi:</b> ${categoryText}\n` +
+      `⏰ <b>Vaqt:</b> ${timeString}`;
+
+    // Telegram Bot Integration (@Kasbtechlidbot)
+    const BOT_TOKEN = '8617319521:AAHSEZcxPr_ffUMIY3EuAMwq2MSCeMC_-hc';
+    const CHAT_IDS = [
+      import.meta.env.VITE_TELEGRAM_CHAT_ID
+    ].filter(Boolean);
+
+    // Send lead to Telegram Bot API
+    if (CHAT_IDS.length > 0) {
+      for (const chatId of CHAT_IDS) {
+        try {
+          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: rawMessage,
+              parse_mode: 'HTML'
+            })
+          });
+        } catch (err) {
+          console.error('Telegram bot send error:', err);
+        }
+      }
+    }
+
+    // Redirect to Telegram Bot with pre-filled message
     const text = encodeURIComponent(
       `🚀 KASBTECH AKADEMIYASI - YANGI ARIZA!\n\n` +
       `👤 Ism: ${fullName}\n` +
@@ -99,9 +135,8 @@ export default function App() {
       `🎓 Maqomi: ${categoryText}`
     );
 
-    // Redirect to Telegram Admin with message after short delay
     setTimeout(() => {
-      window.open(`https://t.me/kasbtech_admin?text=${text}`, '_blank');
+      window.open(`https://t.me/Kasbtechlidbot?start=lead&text=${text}`, '_blank');
     }, 1200);
   };
 
