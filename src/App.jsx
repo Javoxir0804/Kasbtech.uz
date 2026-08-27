@@ -670,11 +670,10 @@ export default function App() {
                           </div>
                         ) : (
                           <div 
-                            onClick={() => handleOpenRegister(current.title)}
-                            className={`w-full h-[320px] sm:h-[380px] cursor-pointer p-6 flex flex-col justify-between bg-gradient-to-br ${current.color} relative overflow-hidden group/card rounded-2xl`}
+                            className={`w-full h-[320px] sm:h-[380px] p-6 flex flex-col justify-between bg-gradient-to-br ${current.color} relative overflow-hidden group/card rounded-2xl`}
                           >
-                            <div className="absolute inset-0 grid-3d-mesh opacity-30" />
-                            <div className="relative z-10 space-y-3">
+                            <div className="absolute inset-0 grid-3d-mesh opacity-30 pointer-events-none" />
+                            <div className="relative z-10 space-y-3 pointer-events-none">
                               <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-xs font-extrabold text-white border border-white/20 uppercase tracking-wider">
                                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                                 <span>{current.badge}</span>
@@ -692,9 +691,16 @@ export default function App() {
                                 <span className="text-[10px] text-white/80 uppercase tracking-wider block">Davomiyligi:</span>
                                 <span className="text-base font-black text-amber-300">{current.duration}</span>
                               </div>
-                              <span className="px-4 py-2 rounded-xl bg-white text-slate-950 font-black text-xs shadow-lg group-hover/card:scale-105 transition-transform">
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleOpenRegister(current.title);
+                                }}
+                                className="px-4 py-2 rounded-xl bg-white text-slate-950 font-black text-xs shadow-lg hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+                              >
                                 Kursga Yozilish →
-                              </span>
+                              </button>
                             </div>
                           </div>
                         )}
