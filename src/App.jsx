@@ -239,13 +239,14 @@ export default function App() {
       <header className="sticky top-0 z-50 glass-nav transition-all duration-300 shadow-2xl shadow-black/80">
         
         {/* TOP ANNOUNCEMENT BAR */}
-        <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-semibold py-1.5 px-3 text-center shadow-md">
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap leading-tight">
-            <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider font-extrabold animate-pulse shrink-0">🔥 QABUL OCHIQ</span>
-            <span className="font-medium">Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
+        <div className="bg-gradient-to-r from-red-700 via-rose-600 to-amber-600 text-white text-[11px] sm:text-xs font-semibold py-1 sm:py-1.5 px-2 sm:px-3 text-center shadow-md">
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 leading-tight">
+            <span className="bg-white/20 backdrop-blur-md px-1.5 py-0.5 rounded-full text-[9px] sm:text-xs uppercase tracking-wider font-extrabold animate-pulse shrink-0">🔥 QABUL OCHIQ</span>
+            <span className="font-medium hidden sm:inline">Rasmiy band bo'lmagan fuqarolarga 100% DAVLAT GRANTI!</span>
+            <span className="font-medium sm:hidden text-[10px]">100% DAVLAT GRANTI!</span>
             <span className="hidden md:inline-block text-white/50">•</span>
             <span className="text-amber-200 font-medium hidden sm:inline-block">Kvotalar cheklangan:</span>
-            <div className="inline-flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md font-mono text-amber-300 text-[11px] border border-amber-500/30">
+            <div className="inline-flex items-center gap-1 bg-black/40 px-1.5 py-0.5 rounded-md font-mono text-amber-300 text-[10px] sm:text-[11px] border border-amber-500/30 shrink-0">
               <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
               <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
               <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
@@ -254,20 +255,20 @@ export default function App() {
         </div>
 
         {/* MAIN NAVBAR */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-20 gap-2">
             
             {/* LOGO */}
-            <a href="#" className="flex items-center gap-2.5 group shrink-0">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
-                <Sparkles className="w-5 h-5 text-white" />
+            <a href="#" className="flex items-center gap-2 group shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform shrink-0">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <div className="flex flex-col shrink-0">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-black text-base sm:text-lg tracking-tight text-white">KASBTECH</span>
-                  <span className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
+                <div className="flex items-center gap-1">
+                  <span className="font-black text-sm sm:text-lg tracking-tight text-white">KASBTECH</span>
+                  <span className="text-[8px] sm:text-[10px] px-1 py-0.5 rounded bg-red-950/90 text-rose-400 border border-red-800/60 font-bold uppercase tracking-wider shrink-0">AKADEMIYASI</span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-medium hidden sm:block">Zamonaviy Kasblar Akademiyasi</span>
+                <span className="text-[9px] sm:text-[10px] text-slate-400 font-medium hidden sm:block">Zamonaviy Kasblar Akademiyasi</span>
               </div>
             </a>
 
@@ -288,7 +289,7 @@ export default function App() {
             </nav>
 
             {/* HEADER ACTIONS */}
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <a
                 href="tel:+998872647171"
                 className="hidden 2xl:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-800/80 text-xs font-bold text-emerald-400 transition-all"
@@ -309,19 +310,20 @@ export default function App() {
 
               <button
                 onClick={() => handleOpenRegister()}
-                className="flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap shimmer-btn"
+                className="flex items-center gap-1 px-2.5 py-1.5 sm:px-4 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-[11px] sm:text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap shimmer-btn shrink-0"
               >
-                <span>Ro'yxatdan O'tish</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span className="hidden xs:inline sm:inline">Ro'yxatdan O'tish</span>
+                <span className="xs:hidden sm:hidden">Yozilish</span>
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
 
               {/* HAMBURGER BUTTON FOR SCREENS < 1024px (lg:hidden) */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                className="lg:hidden p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 transition-colors shrink-0"
                 aria-label="Toggle navigation menu"
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5 text-red-500" /> : <Menu className="w-5 h-5 text-white" />}
+                {isMobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
               </button>
             </div>
 
@@ -422,77 +424,77 @@ export default function App() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+      <section className="relative pt-8 pb-16 md:pt-20 md:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
             {/* HERO LEFT TEXT */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-left">
               
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-red-500/30 text-rose-300 text-xs md:text-sm font-semibold">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-                <span>🎉 KASBTECH AKADEMIYASIDAN AJOYIB IMKONIYAT!</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card border-red-500/30 text-rose-300 text-[11px] sm:text-xs md:text-sm font-semibold max-w-full">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping shrink-0" />
+                <span className="truncate">🎉 KASBTECH AKADEMIYASIDAN AJOYIB IMKONIYAT!</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15]">
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.2] sm:leading-[1.15]">
                 Kasbtech Akademiyasidan <br />
                 <span className="gradient-text-red">Ajoyib Imkoniyat!</span> 🎁
               </h1>
 
-              <p className="text-slate-200 text-base sm:text-xl font-medium leading-relaxed max-w-2xl">
-                Agar siz rasmiy band bo‘lmasangiz, <span className="gradient-text-gold font-extrabold text-xl sm:text-2xl">50% dan 100% gacha</span> bo‘lgan grantga ega bo‘lishingiz mumkin!
+              <p className="text-slate-200 text-sm sm:text-xl font-medium leading-relaxed max-w-2xl">
+                Agar siz rasmiy band bo‘lmasangiz, <span className="gradient-text-gold font-extrabold text-lg sm:text-2xl">50% dan 100% gacha</span> bo‘lgan grantga ega bo‘lishingiz mumkin!
               </p>
 
               {/* QUICK KEY BENEFITS BULLETS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
                 <div className="flex items-center gap-3 glass-card p-3 rounded-xl border-slate-800">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                    <CheckCircle2 className="w-5 h-5" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">100% Davlat Granti</h4>
-                    <p className="text-xs text-slate-400">Band bo'lmagan fuqarolarga tekin</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-white">100% Davlat Granti</h4>
+                    <p className="text-[10px] sm:text-xs text-slate-400">Band bo'lmagan fuqarolarga tekin</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 glass-card p-3 rounded-xl border-slate-800">
-                  <div className="w-9 h-9 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
-                    <Zap className="w-5 h-5" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">Haftada 6 Kun Intensiv</h4>
-                    <p className="text-xs text-slate-400">Faqat amaliyot va loyihalar</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-white">Haftada 6 Kun Intensiv</h4>
+                    <p className="text-[10px] sm:text-xs text-slate-400">Faqat amaliyot va loyihalar</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 glass-card p-3 rounded-xl border-slate-800">
-                  <div className="w-9 h-9 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                    <Award className="w-5 h-5" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                    <Award className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">Rasmiy Sertifikat</h4>
-                    <p className="text-xs text-slate-400">Natija kafolati beriladi</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-white">Rasmiy Sertifikat</h4>
+                    <p className="text-[10px] sm:text-xs text-slate-400">Natija kafolati beriladi</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 glass-card p-3 rounded-xl border-slate-800">
-                  <div className="w-9 h-9 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
-                    <UserCheck className="w-5 h-5" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
+                    <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">Ishga Joylashishga Yordam</h4>
-                    <p className="text-xs text-slate-400">Amaliy ko'mak beriladi</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-white">Ishga Joylashishga Yordam</h4>
+                    <p className="text-[10px] sm:text-xs text-slate-400">Amaliy ko'mak beriladi</p>
                   </div>
                 </div>
               </div>
 
               {/* ACTION BUTTONS */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3">
                 <button
                   onClick={() => handleOpenRegister()}
-                  className="shimmer-btn px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-base shadow-xl shadow-red-600/40 hover:shadow-red-600/60 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-3"
+                  className="shimmer-btn px-6 py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-red-600/40 hover:shadow-red-600/60 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2 sm:gap-3"
                 >
-                  <Sparkles className="w-5 h-5 animate-spin-slow" />
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-spin-slow shrink-0" />
                   <span>HOZIR RO'YXATDAN O'TING</span>
                 </button>
 
@@ -500,9 +502,9 @@ export default function App() {
                   href="https://t.me/kasbtech_admin"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-4 rounded-xl glass-card hover:bg-slate-800/80 border-slate-700 text-slate-200 font-bold text-base hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3.5 rounded-xl glass-card hover:bg-slate-800/80 border-slate-700 text-slate-200 font-bold text-xs sm:text-base hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                 >
-                  <MessageSquare className="w-5 h-5 text-sky-400" />
+                  <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-sky-400 shrink-0" />
                   <span> Telegram Admin (@kasbtech_admin)</span>
                 </a>
               </div>
@@ -514,8 +516,8 @@ export default function App() {
               <div className="relative glass-card p-4 sm:p-6 rounded-3xl border-red-500/30 shadow-2xl shadow-red-950/50 gradient-border-red tilt-card-3d glowing-border-animated">
                 
                 {/* FLOATING 3D BADGE */}
-                <div className="absolute -top-4 -right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-xs px-4 py-1.5 rounded-full shadow-xl transform rotate-3 flex items-center gap-1.5 floating-3d-orb">
-                  <Gift className="w-4 h-4 text-slate-950 animate-bounce" />
+                <div className="absolute -top-3.5 right-2 sm:-right-2 bg-gradient-to-r from-amber-400 via-amber-500 to-red-600 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-xl transform rotate-2 sm:rotate-3 flex items-center gap-1 floating-3d-orb z-20">
+                  <Gift className="w-3.5 h-3.5 text-slate-950 animate-bounce" />
                   <span>100% DAVLAT GRANTI</span>
                 </div>
 

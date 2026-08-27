@@ -160,10 +160,12 @@ html {
   perspective: 1000px;
 }
 
-.tilt-card-3d:hover {
-  transform: translateY(-8px) rotateX(3deg) rotateY(-3deg) scale(1.015);
-  box-shadow: 0 20px 45px rgba(220, 38, 38, 0.25);
-  border-color: rgba(239, 68, 68, 0.6);
+@media (hover: hover) and (pointer: fine) {
+  .tilt-card-3d:hover {
+    transform: translateY(-8px) rotateX(3deg) rotateY(-3deg) scale(1.015);
+    box-shadow: 0 20px 45px rgba(220, 38, 38, 0.25);
+    border-color: rgba(239, 68, 68, 0.6);
+  }
 }
 
 .floating-3d-orb {
